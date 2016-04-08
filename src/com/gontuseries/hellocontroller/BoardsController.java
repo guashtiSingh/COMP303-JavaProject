@@ -9,14 +9,20 @@ public class BoardsController {
 	
 	// Constructor - initializes the board list
 	public BoardsController(){
+		
 		boards = new ArrayList<Board>();
-		boards.add(new Board("COMP-303 Java EE"));
-		boards.add(new Board("COMP-397 Web Game Programming"));
-		boards.add(new Board("COMP-308 Emerging Technologies"));
+		boards.add(new Board(1,"COMP-303 Java EE"));
+		boards.add(new Board(2, "COMP-397 Web Game Programming"));
+		boards.add(new Board(3, "COMP-308 Emerging Technologies"));
 	}
 	
 	public Iterator<Board> getIterator(){
 		return boards.iterator();
+	}
+
+	public Board getBoard (int index) {
+		
+		return boards.get(index);
 	}
 
 }

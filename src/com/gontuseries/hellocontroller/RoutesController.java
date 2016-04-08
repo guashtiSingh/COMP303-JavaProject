@@ -5,11 +5,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 // All website routes are controlled here.
 @Controller
 public class RoutesController {
 	private User user;
+	private Board board;
 	private BoardsController boards;
 	
 	// Handler for the username form submission
@@ -25,6 +30,14 @@ public class RoutesController {
         // Show 'main.jsp' to the user
         return "main";
     }
+
+    //Handler
+	@RequestMapping(value= "/boards/{boardID}", method=RequestMethod.GET)
+	public String findTopics(@PathVariable String boardID, Model model) {
+		//boards.getBoard(board.boardID);
+		model.addAttribute("board",boards.getBoard(board.boardID));
+		return "topic";
+	}
 
 	public User getUser() {
 		return user;
