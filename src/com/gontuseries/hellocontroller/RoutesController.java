@@ -45,9 +45,6 @@ public class RoutesController {
 	public String findMessages(@PathVariable String boardID, @PathVariable String topicID, Model model) {
 		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
 		Topic currentTopic = currentBoard.getTopic(Integer.parseInt(topicID));
-		//Topic currentTopic = currentBoard.getTopic(2);
-		//Topic currentTopic = new Topic(10, "hola");
-		//System.out.print(currentTopic.getTopicName());
 		model.addAttribute("board", currentBoard );
 		model.addAttribute("topic", currentTopic );
 		model.addAttribute("availablePostings", currentTopic.getPostingsIterator());
