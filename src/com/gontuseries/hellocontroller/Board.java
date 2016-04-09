@@ -1,4 +1,7 @@
 package com.gontuseries.hellocontroller;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Board {
 	
@@ -10,6 +13,7 @@ public class Board {
 	public Board(int boardID, String boardName) {
 		this.boardID = boardID;
 		this.boardName = boardName;
+		this.topics = new ArrayList<Topic>();
 	}
 	
 	public int getBoardID() {
@@ -34,5 +38,14 @@ public class Board {
 
 	public void setTopics(List<Topic> topics) {
 		this.topics = topics;
+	}
+	
+	public void addTopic(int topicID, String topicName) {
+		Topic newTopic = new Topic(topicID, topicName);
+		this.topics.add(newTopic);
+	}
+	
+	public Iterator<Topic> getTopicsIterator(){
+		return topics.iterator();
 	}
 }

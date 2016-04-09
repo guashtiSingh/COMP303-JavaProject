@@ -12,7 +12,7 @@
 	<p>Select a board to view the topics</p>
 	<ul>
 		<c:forEach items="${availableBoards}" var="board"> 
-		    <li><a href="/boards/${board.boardID}"> ${board.boardName} </a></li>
+		    <li><a href="boards/${board.boardID}"> ${board.boardName} </a></li>
 		</c:forEach>
 	</ul>
 </body>

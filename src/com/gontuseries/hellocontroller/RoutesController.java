@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class RoutesController {
 	private User user;
-	private Board board;
 	private BoardsController boards;
 	
 	// Handler for the username form submission
@@ -31,11 +30,12 @@ public class RoutesController {
         return "main";
     }
 
-    //Handler
+    // Handler for the board homepage (topic selection list)
 	@RequestMapping(value= "/boards/{boardID}", method=RequestMethod.GET)
 	public String findTopics(@PathVariable String boardID, Model model) {
-		//boards.getBoard(board.boardID);
-		model.addAttribute("board",boards.getBoard(board.boardID));
+		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
+		model.addAttribute("board", currentBoard );
+		model.addAttribute("availableTopics", currentBoard.getTopicsIterator() );
 		return "topic";
 	}
 
