@@ -1,5 +1,6 @@
 package com.gontuseries.hellocontroller;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -9,8 +10,6 @@ public class Topic {
 	protected int topicID;
 	protected String topicName;
 	protected List<String> postings;
-	
-
 
 	//Constructor
 	public Topic(int topicID, String topicName) {

@@ -67,7 +67,6 @@ public class BoardsController {
 			b.getTopic(4).addPosting("Message 1");
 			b.getTopic(4).addPosting("Message 2");
 			b.getTopic(4).addPosting("Message 3");
-	
 		boards.add(b);
 		
 	}
