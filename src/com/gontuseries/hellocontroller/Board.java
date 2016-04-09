@@ -45,6 +45,11 @@ public class Board {
 		this.topics.add(newTopic);
 	}
 	
+
+	public Topic getTopic (int index){
+		return this.topics.get(index-1);		
+	}
+
 	public Iterator<Topic> getTopicsIterator(){
 		return topics.iterator();
 	}

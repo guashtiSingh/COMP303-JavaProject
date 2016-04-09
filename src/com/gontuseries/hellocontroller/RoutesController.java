@@ -38,6 +38,18 @@ public class RoutesController {
 		model.addAttribute("availableTopics", currentBoard.getTopicsIterator() );
 		return "topic";
 	}
+	
+	//[/SpringMVCProject/boards/boards/1/topic/1]
+    // Handler for the topic selection list
+	@RequestMapping(value= "/boards/boards/{boardID}/topic/{topicID}", method=RequestMethod.GET)
+	public String findMessages(@PathVariable String boardID, @PathVariable String topicID, Model model) {
+		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
+		Topic currentTopic = currentBoard.getTopic(Integer.parseInt(topicID));
+		model.addAttribute("board", currentBoard );
+		model.addAttribute("topic", currentTopic );
+		model.addAttribute("availablePostings", currentTopic.getPostingsIterator());
+		return "postings";
+	}
 
 	public User getUser() {
 		return user;
