@@ -8,15 +8,24 @@
 <title>Centennial Message Board Topics</title>
 </head>
 <body>	
-
+<div class="navigation">
+<a href="http://localhost:8088/SpringMVCProject/main">Home</a> | 
+<strong>Topic List</strong>
+</div>
 	<h1>Board ${board.boardID}: ${board.boardName}</h1>
 	<hr>
 	<h2>Topics:</h2>
 	<ul>
 		<c:forEach items="${availableTopics}" var="topic"> 
-		    <li><a href="boards/${board.boardID}/topic/${topic.topicID}"> ${topic.topicName} </a></li>
+		    <li><a href="${board.boardID}/topic/${topic.topicID}">${topic.topicName}</a></li>
 		</c:forEach>
 	</ul> 
+	<hr>
+	<h2>Create a topic:</h2>
+	<form method="POST">
+	<input type="text" name="name" placeholder="topic name"><br>
+	<input type="submit" value="Create">
+	</form>
 	
 </body>
 </html>

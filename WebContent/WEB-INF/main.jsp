@@ -5,9 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Board List</title>
 </head>
 <body>
+<div class="navigation">
+<strong>Home</strong> | 
+<a href="http://localhost:8088/SpringMVCProject">Sign Out</a>
+</div>
 	<h1>Welcome, ${user.username}!</h1>
 	<p>Select a board to view the topics</p>
 	<ul>
