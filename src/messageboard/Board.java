@@ -1,4 +1,4 @@
-package com.gontuseries.hellocontroller;
+package messageboard;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.gontuseries.hellocontroller;
+package messageboard;
 
 public class User {
 	protected String username;

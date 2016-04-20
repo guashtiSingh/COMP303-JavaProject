@@ -1,4 +1,4 @@
-package com.gontuseries.hellocontroller;
+package messageboard;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
