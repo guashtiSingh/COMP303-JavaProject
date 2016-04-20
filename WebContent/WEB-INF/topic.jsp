@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" > 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script> 
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script> 
+
 <title>Centennial Message Board Topics</title>
 
 <script type="text/javascript">
@@ -24,25 +28,45 @@
 	});
 </script>
 </head>
-<body>
-	<div class="navigation">
-		<a href="http://localhost:8088/SpringMVCProject/main">Home</a> | <strong>Topic
-			List</strong>
-	</div>
-	<h1>Board ${board.boardID}: ${board.boardName}</h1>
-	<hr>
-	<h2>Topics:</h2>
-	<ul>
-		<c:forEach items="${availableTopics}" var="topic">
-			<li><a href="${board.boardID}/topic/${topic.topicID}">${topic.topicName}</a></li>
-		</c:forEach>
-	</ul>
-	<hr>
-	<h2>Create a topic:</h2>
-	<form method="POST" id="topicForm">
-		<input type="text" name="name" placeholder="topic name"><br>
-		<input type="submit" value="Create">
-	</form>
+<body style="background-color: #A6DB85">
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand">Centennial Message Board</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li role="presentation"><a href="http://localhost:8080/SpringMVCProject/">Home</a></li> 
+					<li role="presentation"><a href="http://localhost:8080/SpringMVCProject/main">Topic List</a></li>
+					<li role="presentation"><a href="http://localhost:8080/SpringMVCProject/">Sign Out</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
+	<div class="container">
+		<div class="page-header">
+			<h1 style="color: green">Board ${board.boardID}: ${board.boardName}</h1>
+		</div>
+	</div>
+		
+	<div class="container">
+		<h2 style="color: green">Topics:</h2>
+		<ul class="list-group">
+			<c:forEach items="${availableTopics}" var="topic">
+				<li class="list-group-item"><a href="${board.boardID}/topic/${topic.topicID}">${topic.topicName}</a></li>
+			</c:forEach>
+		</ul>
+	</div>
+		
+	<div class="container">
+		<form method="POST" id="topicForm">
+			<h2 style="color: green">Create a Topic</h2>
+				<fieldset class="form-group">
+					<input type="text" class="form-control" name="name" placeholder="Topic name"><br>
+					<input type="submit" class="btn btn-default" value="Create">	
+				</fieldset>
+		</form>
+	</div>
 </body>
 </html>

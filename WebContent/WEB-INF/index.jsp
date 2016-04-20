@@ -4,14 +4,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" > 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script> 
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script> 
+
 <title>Message board</title>
 </head>
-<body>
-	<h1>Centennial message board</h1>
-	<form method="POST" action="main">
-	<p><font color="#800000" size="5"> Enter your username: </font>
-	<input type ="text" name="username" size="20"></p>
-	<p><input type="submit" value="Submit" name="B1"></p>
-	</form>
+
+<body style="background-color: #A6DB85">	
+	<div class="container-fluid">
+	    <div class="col-md-12 column">
+    		<div class="col-md-6 col-md-offset-3 column">
+				<form method="POST" action="main">
+					<h2 style="color: green">Centennial Message Board</h2>
+					<fieldset class="form-group">
+						<label style="color: green">Enter your username</label>
+						<input type ="text" class="form-control" placeholder="username" name="Username" size="20"></p>		
+					</fieldset>
+					<fieldset class="form-group">
+						<input type="submit" class="btn btn-default" value="Submit" name="B1">
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
