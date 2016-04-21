@@ -19,7 +19,7 @@
 					<h2 style="color: green">Centennial Message Board</h2>
 					<fieldset class="form-group">
 						<label style="color: green">Enter your username</label>
-						<input type ="text" class="form-control" placeholder="username" name="Username" size="20"></p>		
+						<input type ="text" class="form-control" placeholder="username" name="Username" size="20" required></p>		
 					</fieldset>
 					<fieldset class="form-group">
 						<input type="submit" class="btn btn-default" value="Submit" name="B1">

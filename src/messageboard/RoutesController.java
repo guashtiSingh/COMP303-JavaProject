@@ -32,24 +32,44 @@ public class RoutesController
 		// Show 'main.jsp' to the user
 		return "main";
 	}
+
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String displayMain(@ModelAttribute User user, Model model)
 	{
-		model.addAttribute("user", user);
-		model.addAttribute("availableBoards", this.boards.getIterator());
-		// Show 'main.jsp' to the user
-		return "main";
+		String newPage;
+		if (user.getUsername() == null)
+		{
+			newPage = "redirect:";
+		}
+		else
+		{
+			model.addAttribute("user", user);
+			model.addAttribute("availableBoards", this.boards.getIterator());
+			// Show 'main.jsp' to the user
+			newPage = "main";
+		}
+		return newPage;
 	}
 
 	// Handler for the board homepage (topic selection list)
 	@RequestMapping(value = "/boards/{boardID}", method = RequestMethod.GET)
 	public String findTopics(@PathVariable String boardID, Model model)
 	{
-		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
-		model.addAttribute("board", currentBoard);
-		model.addAttribute("availableTopics", currentBoard.getTopicsIterator());
-		return "topic";
+		String newPage;
+		if (this.getUser() == null)
+		{
+			newPage = "redirect:/";
+		}
+		else
+		{
+			Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
+			model.addAttribute("board", currentBoard);
+			model.addAttribute("availableTopics", currentBoard.getTopicsIterator());
+			newPage = "topic";
+		}
+		return newPage;
 	}
+
 	@RequestMapping(value = "/boards/{boardID}", method = RequestMethod.POST)
 	public String createTopic(@PathVariable String boardID, @RequestParam("name") String name, Model model)
 	{
@@ -66,15 +86,26 @@ public class RoutesController
 	@RequestMapping(value = "/boards/{boardID}/topic/{topicID}", method = RequestMethod.GET)
 	public String findMessages(@PathVariable String boardID, @PathVariable String topicID, Model model)
 	{
-		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
-		Topic currentTopic = currentBoard.getTopic(Integer.parseInt(topicID));
-		model.addAttribute("board", currentBoard);
-		model.addAttribute("topic", currentTopic);
-		model.addAttribute("availablePostings", currentTopic.getPostingsIterator());
-		return "postings";
+		String newPage;
+		if (this.getUser() == null)
+		{
+			newPage = "redirect:/";
+		}
+		else
+		{
+			Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
+			Topic currentTopic = currentBoard.getTopic(Integer.parseInt(topicID));
+			model.addAttribute("board", currentBoard);
+			model.addAttribute("topic", currentTopic);
+			model.addAttribute("availablePostings", currentTopic.getPostingsIterator());
+			newPage = "postings";
+		}
+		return newPage;
 	}
+
 	@RequestMapping(value = "/boards/{boardID}/topic/{topicID}", method = RequestMethod.POST)
-	public String postMessages(@PathVariable String boardID, @PathVariable String topicID, @RequestParam(name="message") String message, Model model)
+	public String postMessages(@PathVariable String boardID, @PathVariable String topicID,
+			@RequestParam(name = "message") String message, Model model)
 	{
 		Board currentBoard = boards.getBoard(Integer.parseInt(boardID));
 		Topic currentTopic = currentBoard.getTopic(Integer.parseInt(topicID));
